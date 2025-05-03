@@ -1,28 +1,29 @@
 version: 2.1
 
 jobs:
-    build:
-        docker:
-          - image: cimg/node:21.0
-        steps:
-          - checkout
-          - run:
-              name: Install Dependencies
-              command: npm install
-          - persist_to_workspace:
-              root: .
-              paths:
-                - node_modules
-                - .
-      test:
-          docker:
-            - image: cimg/node:21.0
-          steps:
-            - attach_workspace:
-                at: .
-          - run:
-               name: Run Tests
-               command: npm test
+  build:
+    docker:
+      - image: cimg/node:21.0
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: npm install
+      - persist_to_workspace:
+          root: .
+          paths:
+            - node_modules
+            - .
+
+  test:
+    docker:
+      - image: cimg/node:21.0
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Run Tests
+          command: npm test
 
 workflows:
   version: 2
@@ -31,5 +32,4 @@ workflows:
       - build
       - test:
           requires:
-              - build
-        
+            - build
