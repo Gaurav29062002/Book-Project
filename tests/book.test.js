@@ -1,5 +1,6 @@
-import request from 'supertest';
-import app from '../app.js';
+const request = require('supertest');
+const app = require('../app');
+
 
 describe('Book API', () => {
   it('should add a new book', async () => {
