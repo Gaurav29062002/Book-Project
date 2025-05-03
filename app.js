@@ -1,5 +1,5 @@
-import express from 'express';
-import bookRoutes from './routes/bookRoutes.js';
+const express = require('express');
+const bookRoutes = require('./routes/bookRoutes');
 
 const app = express();
 const PORT = 3000;
@@ -11,4 +11,4 @@ app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
 
-export default app;
+module.exports = app;

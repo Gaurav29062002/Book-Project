@@ -1,10 +1,10 @@
-import express from 'express';
-import {
+const express = require('express');
+const {
   getBooks,
   addBook,
   updateBook,
-  deleteBook,
-} from '../controllers/bookController.js';
+  deleteBook
+} = require('../controllers/bookController');
 
 const router = express.Router();
 
@@ -13,4 +13,4 @@ router.post('/', addBook);
 router.put('/:id', updateBook);
 router.delete('/:id', deleteBook);
 
-export default router;
+module.exports = router;
